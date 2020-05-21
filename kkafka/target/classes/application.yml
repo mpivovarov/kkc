@@ -5,8 +5,12 @@ logging:
 spring:
   profiles:
     active: local
-
   kafka:
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      bootstrap-servers: localhost:9092
+#  kafka:
 #    consumer:
 #      bootstrap-servers: localhost:9092
 #      group-id: group_id
@@ -32,8 +36,8 @@ spring:
 #          contentType: application/json
 
 kafka:
-  host: localhost
-  port: 9092
+#  host: localhost
+#  port: 9092
   topic: kkc_message
 
 server:
