@@ -1,0 +1,13 @@
+logging:
+  level:
+    root: INFO
+
+spring:
+  profiles:
+    active: local
+  data:
+    cassandra:
+      contact-points: localhost
+      keyspace-name: kkc
+server:
+  port: 8086
