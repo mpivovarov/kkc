@@ -9,5 +9,15 @@ spring:
     cassandra:
       contact-points: localhost
       keyspace-name: kkc
+  kafka:
+    consumer:
+      group-id: group
+      auto-offset-reset: earliest
+    # change this property if you are using your own
+    # Kafka cluster or your Docker IP is different
+    bootstrap-servers: localhost:9092
 server:
   port: 8086
+
+kafka:
+  topic: kkc_message

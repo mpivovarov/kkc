@@ -13,7 +13,7 @@ class KafkaConsumer {
     @Autowired
     lateinit var kkcService: KkcService
 
-    @KafkaListener(topics = [topic], groupId = "group_id")
+    @KafkaListener(topics = [topic])
     fun consume(message: String) {
         println("Consumed message $message")
         try {
