@@ -12,15 +12,15 @@ class KkcServiceImpl : KkcService {
     @Autowired lateinit var om: ObjectMapper
     @Autowired lateinit var repo: KkcMessageRepo
 
-    override fun get(count: Int?): List<KkcMessage> {
-        TODO()
+    override fun get(count: Int): List<KkcMessage> {
+        return repo.selectWithLimit(count).map { it.unapply() }
     }
 
     override fun insert(str: String) {
         try {
             val msg = om.readValue(str, KkcMessage::class.java)
             println("parsed message $msg")
-            repo.insert(KkcMessageTable.instance(msg))
+            repo.insert(KkcMessageTable.apply(msg))
         } catch (ex: Throwable) {
             // no action
             println(ex)

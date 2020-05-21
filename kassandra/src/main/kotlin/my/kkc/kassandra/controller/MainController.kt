@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 
 @RestController
-@RequestMapping("/api/kafka")
+@RequestMapping("/api/kassandra")
 class MainController {
 
     @Autowired
@@ -15,8 +15,8 @@ class MainController {
 
     @GetMapping("", "/{count}")
     fun get(@PathVariable(value = "count", required = false) count: Int?): RestResponse {
-        kkcService.get(count?:GET_DEFAULT)
-        return SuccessResponse(count?:0)
+        val list = kkcService.get(count?:GET_DEFAULT)
+        return SuccessResponse(list)
     }
 
     companion object {

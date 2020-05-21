@@ -17,8 +17,15 @@ data class KkcMessageTable (
         val subject: String,
         val message: String
 )  {
+        fun unapply() = KkcMessage(
+                this.messageId,
+                this.timestamp,
+                this.subject,
+                this.message
+        )
+
         companion object {
-                fun instance(kkcm: KkcMessage) = KkcMessageTable(
+                fun apply(kkcm: KkcMessage) = KkcMessageTable(
                         kkcm.messageId,
                         kkcm.timestamp,
                         kkcm.subject,
